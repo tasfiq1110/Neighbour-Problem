@@ -36,3 +36,10 @@ The character is 2,160,468 bytes with 11,376 triangles and embedded textures. An
 - [Bark Brown 01](https://polyhaven.com/a/bark_brown_01): `textures/bark_brown_01_{diff,nor_gl,rough}_1k.jpg`, standard 1024px PBR set.
 
 Foliage models use authored geometry and alpha-tested leaf materials. Preserve double-sided and alpha-mask settings from glTF; avoid converting leaves to transparent blending. Tree candidates were 25–214 MB and omitted to keep the mobile build manageable. Use close-range shrub meshes alongside cheaper distant foliage instead of cloning detailed models for all 300 trees.
+
+
+## Bangla speech and sound (2.2)
+
+The original Bangla companion script is in `audio/bn/lines.json`. MP3 clips were synthesized from this script using Microsoft Edge speech with the male Bangla (Bangladesh) voice bn-BD-PradeepNeural; no real person's voice was cloned. Clips are bundled and playback makes no speech-service requests. The optional authoring script is `scripts/generate-voices.py`; Python and edge-tts are not game/runtime dependencies.
+
+Background music, wind/rain/river layers, wildlife tones, gunshot layers, footsteps, reloads and impact sounds are procedurally synthesized in `audio.js`; no third-party music recording is included.

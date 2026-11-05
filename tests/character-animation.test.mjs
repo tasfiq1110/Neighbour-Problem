@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as THREE from 'three';
-import {CharacterAnimation} from '../dist/character-animation.js';
+import {CharacterAnimation,locomotionDirection} from '../dist/character-animation.js';
 import {Simulation, Navigation, dist} from '../dist/simulation.js';
 
 // Exercise the shipped skeleton and clips without needing a GPU or textures.
@@ -70,3 +70,15 @@ test('companion settles without repeated start/stop at follow boundary',()=>{
   assert.ok(transitions<=2);assert.ok(dist(sim.buddy,sim.player)<2.8);
   sim.player.z-=.5;sim.step(.05);assert.equal(sim.buddy.moving,false);
 });
+
+ test('movement directions select strafing and backward gait relative to aim',()=>{
+ const front=locomotionDirection(0,1,0),back=locomotionDirection(0,-1,0),right=locomotionDirection(1,0,0),left=locomotionDirection(-1,0,0);
+ assert.equal(front.direction,1);assert.equal(back.direction,-1);assert.ok(Math.abs(back.yaw)<.001);assert.ok(Math.abs(right.yaw-Math.PI/2)<.001);assert.ok(Math.abs(left.yaw+Math.PI/2)<.001);
+ const rig=fixture();rig.update({x:0,z:0,angle:0},1/60,true);for(let i=1;i<=60;i++)rig.update({x:i*.05,z:0,angle:0},1/60,true);assert.ok(rig.legYaw>1.4);
+ for(let i=1;i<=60;i++)rig.update({x:3,z:-i*.05,angle:0},1/60,true);assert.ok(Math.abs(rig.legYaw)<.05);assert.ok(rig.actions.Walk.getEffectiveTimeScale()<0);
+ });
+ test('melee blends from the armed pose without hiding the weapon or invalid bone transforms',()=>{
+ const rig=fixture();rig.update({x:0,z:0},1/60,true);const start=rig.weapon.position.clone();let maxJump=0,last=start.clone();
+ for(let i=0;i<44;i++){rig.update({x:0,z:0,melee:Math.max(0,.72-i/60),meleeBehind:true},1/60,true);assert.equal(rig.weapon.visible,true);maxJump=Math.max(maxJump,last.distanceTo(rig.weapon.position));last.copy(rig.weapon.position);for(const bone of Object.values(rig.bones))assert.ok(bone.quaternion.toArray().every(Number.isFinite));}
+ assert.ok(maxJump<.18,'weapon jumps '+maxJump+' metres');
+ });

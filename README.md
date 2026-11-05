@@ -37,6 +37,9 @@ This URL is not live until Pages is enabled and the deployment completes. No API
 | B | Cycle supported fire modes |
 | R | Reload |
 | Q | Companion follow / hold |
+| J | Companion cover fire / hold fire |
+| Z | Mark the enemy in your aim direction |
+| Space (hold) / K (toggle) | Steady aim; slower movement and tighter spread |
 | G / X / H | Decoy / smoke / medkit |
 | M / Escape | Map / pause |
 
@@ -54,3 +57,13 @@ This is a static application: `dist` is the maintained source and deployment dir
 Asset attribution and license conditions are in [ASSET-CREDITS.md](dist/assets/ASSET-CREDITS.md). Environment assets are CC0; the Soldier character has separate Mixamo usage terms. See [UPGRADE-NOTES.md](UPGRADE-NOTES.md) for implementation details.
 
 All characters and events are fictional. The game is single-player with an AI companion; it does not implement online multiplayer.
+
+## Audio, strategy and controls (2.2)
+
+Includes 21 bundled Bangla radio lines, layered ambience and an adaptive synthesized score. Audio begins after Deploy/Training is pressed; pause settings have separate effects, background/music and voice sliders. Sound stops during pause and when the tab loses focus.
+
+The companion has an independent weapon, three-shot bursts, finite reserve ammunition and reloads. Holding position does not disable covering fire. Hold-fire orders preserve stealth; mark a visible target to prioritize it when cover fire is enabled. Smoke and friendlies block its shots. Supply caches replenish companion ammunition.
+
+Steady aim improves precision at the cost of speed. Sustained fire increases spread, while shots passing close to a guard temporarily reduce their firing rate. Legs turn toward strafing movement, backward movement reverses the gait, and the spine counter-turns to preserve the aim direction.
+
+Controls are automatically selected from device capabilities and mobile/tablet detection, not viewport width. Desktop hides touch buttons; touch hides keyboard badges and keyboard instructions. The menu provides an override for hybrid devices.

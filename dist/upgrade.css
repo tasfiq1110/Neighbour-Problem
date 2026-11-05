@@ -13,3 +13,22 @@
 
 @media(max-width:600px){.touch-actions button{width:42px!important;height:36px!important}}
 @media(max-width:360px){.touch-actions button{width:34px!important;height:34px!important}}
+
+/* Input capabilities, not window width, determine which control surface is shown. */
+.touch-only{display:none}.control-choice{display:block;max-width:360px;margin-top:12px}.control-choice span{display:block;font-size:9px;margin-bottom:6px;color:#9aafaa}
+html[data-input="desktop"] #mobile{display:none!important}
+html[data-input="desktop"] .touch-only{display:none!important}
+html[data-input="desktop"] .controls-strip{display:block!important;white-space:normal;line-height:1.7}
+html[data-input="desktop"] .bottom-hud{bottom:55px!important}
+html[data-input="desktop"] .buddy{bottom:180px;top:auto}
+html[data-input="touch"] .desktop-only,html[data-input="touch"] .controls-strip,html[data-input="touch"] kbd,html[data-input="touch"] #crosshair{display:none!important}
+html[data-input="touch"] .touch-only{display:block}
+html[data-input="touch"] #mobile{display:flex!important}
+html[data-input="touch"] .bottom-hud{bottom:178px}
+html[data-input="touch"] .buddy{bottom:285px}
+html[data-input="touch"] .touch-actions{grid-template-columns:repeat(4,1fr)}
+.audio-settings{display:grid;gap:12px;margin:15px 0}.audio-settings label{display:flex;align-items:center;justify-content:space-between;font-size:11px;gap:14px}.audio-settings input{width:55%;accent-color:#d8c38f}
+#tactic-status{font-size:9px;color:#e0c886;margin-top:8px}
+@media(max-width:600px){html[data-input="touch"] .touch-actions button{width:34px!important;height:34px!important}html[data-input="desktop"] .bottom-hud{left:10px;right:10px;gap:4px}html[data-input="desktop"] .controls-strip{font-size:6px;left:12px;right:12px}html[data-input="desktop"] .buddy{bottom:180px}#tactic-status{font-size:8px}}
+@media(max-width:360px){html[data-input="touch"] .touch-actions button{width:29px!important;height:32px!important}}
+@media(max-height:550px) and (orientation:landscape){html[data-input="touch"] .bottom-hud{bottom:18px}html[data-input="touch"] .buddy{top:195px;bottom:auto}html[data-input="touch"] .touch-actions{bottom:85px;right:116px;grid-template-columns:repeat(5,1fr)}html[data-input="desktop"] .bottom-hud{bottom:45px!important;left:20px;right:20px}html[data-input="desktop"] .buddy{bottom:145px;top:auto}}
