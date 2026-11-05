@@ -32,3 +32,5 @@ html[data-input="touch"] .touch-actions{grid-template-columns:repeat(4,1fr)}
 @media(max-width:600px){html[data-input="touch"] .touch-actions button{width:34px!important;height:34px!important}html[data-input="desktop"] .bottom-hud{left:10px;right:10px;gap:4px}html[data-input="desktop"] .controls-strip{font-size:6px;left:12px;right:12px}html[data-input="desktop"] .buddy{bottom:180px}#tactic-status{font-size:8px}}
 @media(max-width:360px){html[data-input="touch"] .touch-actions button{width:29px!important;height:32px!important}}
 @media(max-height:550px) and (orientation:landscape){html[data-input="touch"] .bottom-hud{bottom:18px}html[data-input="touch"] .buddy{top:195px;bottom:auto}html[data-input="touch"] .touch-actions{bottom:85px;right:116px;grid-template-columns:repeat(5,1fr)}html[data-input="desktop"] .bottom-hud{bottom:45px!important;left:20px;right:20px}html[data-input="desktop"] .buddy{bottom:145px;top:auto}}
+
+.developer-credit{margin:18px 0 0;font-size:12px;letter-spacing:.06em;color:#bccbc4}.developer-credit strong{color:var(--lime);font-weight:600}
